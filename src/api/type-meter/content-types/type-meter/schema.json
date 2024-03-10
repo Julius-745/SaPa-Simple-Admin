@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "type_meters",
+  "info": {
+    "singularName": "type-meter",
+    "pluralName": "type-meters",
+    "displayName": "Type Meter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ID_TYPE_METER": {
+      "type": "biginteger"
+    },
+    "NAMA": {
+      "type": "string",
+      "required": true
+    },
+    "PRICE": {
+      "type": "integer"
+    }
+  }
+}
