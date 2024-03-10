@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wilayahs",
+  "info": {
+    "singularName": "wilayah",
+    "pluralName": "wilayahs",
+    "displayName": "wilayah",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ID_WILAYAH": {
+      "type": "biginteger",
+      "required": true
+    },
+    "NAMA_WILAYAH": {
+      "type": "string",
+      "required": true
+    },
+    "LOCATION": {
+      "type": "string",
+      "required": true
+    },
+    "id_jalan": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::jalan.jalan",
+      "mappedBy": "id_wilayah"
+    },
+    "id_cabang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cabang.cabang",
+      "inversedBy": "id_wilayah"
+    },
+    "id_penggguna": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pengguna.pengguna",
+      "mappedBy": "id_wilayah"
+    }
+  }
+}

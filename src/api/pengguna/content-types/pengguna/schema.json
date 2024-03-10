@@ -1,0 +1,101 @@
+{
+  "kind": "collectionType",
+  "collectionName": "penggunas",
+  "info": {
+    "singularName": "pengguna",
+    "pluralName": "penggunas",
+    "displayName": "Pengguna",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "id_pengguna": {
+      "type": "biginteger"
+    },
+    "no_daftar": {
+      "type": "biginteger"
+    },
+    "tgl_daftar": {
+      "type": "date",
+      "required": true
+    },
+    "nama_pengguna": {
+      "type": "string",
+      "required": true
+    },
+    "alamat": {
+      "type": "string",
+      "required": true
+    },
+    "no_rumah": {
+      "type": "string"
+    },
+    "nomer_hp": {
+      "type": "string",
+      "required": true
+    },
+    "unit": {
+      "type": "biginteger",
+      "required": true
+    },
+    "status": {
+      "type": "boolean"
+    },
+    "tagihan": {
+      "type": "biginteger",
+      "required": true
+    },
+    "id_cabang": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cabang.cabang",
+      "inversedBy": "id_pengguna"
+    },
+    "id_wilayah": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::wilayah.wilayah",
+      "inversedBy": "id_penggguna"
+    },
+    "id_jalan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jalan.jalan",
+      "inversedBy": "id_pengguna"
+    },
+    "id_tipe_pelanggan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::type.type",
+      "inversedBy": "id_pengguna"
+    },
+    "id_type_meter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::type-meter.type-meter",
+      "inversedBy": "id_pengguna"
+    },
+    "id_pengaduan": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pengaduan.pengaduan",
+      "mappedBy": "id_pengguna"
+    },
+    "foto_pengguna": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

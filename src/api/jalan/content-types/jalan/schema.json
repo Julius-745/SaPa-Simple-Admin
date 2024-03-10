@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jalans",
+  "info": {
+    "singularName": "jalan",
+    "pluralName": "jalans",
+    "displayName": "Jalan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "id_jalan": {
+      "type": "biginteger"
+    },
+    "nama_jalan": {
+      "type": "string",
+      "required": true
+    },
+    "lokasi": {
+      "type": "string",
+      "required": true
+    },
+    "id_wilayah": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::wilayah.wilayah",
+      "inversedBy": "id_jalan"
+    },
+    "id_pengguna": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pengguna.pengguna",
+      "mappedBy": "id_jalan"
+    }
+  }
+}

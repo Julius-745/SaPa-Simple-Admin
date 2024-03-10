@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pengaduans",
+  "info": {
+    "singularName": "pengaduan",
+    "pluralName": "pengaduans",
+    "displayName": "Pengaduan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "id_pengaduan": {
+      "type": "biginteger",
+      "required": true
+    },
+    "tanggal_pengaduan": {
+      "type": "date",
+      "required": true
+    },
+    "foto_pengaduan": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    },
+    "kategori": {
+      "type": "enumeration",
+      "enum": [
+        "Perawartan",
+        "Kebocoran",
+        "Pemasangan",
+        "Lainnya"
+      ],
+      "required": true
+    },
+    "deskripsi": {
+      "type": "string",
+      "required": true
+    },
+    "lokasi_pengaduan": {
+      "type": "string",
+      "required": true
+    },
+    "id_pengguna": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pengguna.pengguna",
+      "inversedBy": "id_pengaduan"
+    }
+  }
+}

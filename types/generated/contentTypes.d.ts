@@ -362,38 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiTypeMeterTypeMeter extends Schema.CollectionType {
-  collectionName: 'type_meters';
-  info: {
-    singularName: 'type-meter';
-    pluralName: 'type-meters';
-    displayName: 'Type Meter';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    ID_TYPE_METER: Attribute.BigInteger;
-    NAMA: Attribute.String & Attribute.Required;
-    PRICE: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::type-meter.type-meter',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::type-meter.type-meter',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -820,6 +788,324 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiCabangCabang extends Schema.CollectionType {
+  collectionName: 'cabangs';
+  info: {
+    singularName: 'cabang';
+    pluralName: 'cabangs';
+    displayName: 'Cabang';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    id_cabang: Attribute.BigInteger & Attribute.Required;
+    nama_cabang: Attribute.String & Attribute.Required;
+    id_wilayah: Attribute.Relation<
+      'api::cabang.cabang',
+      'oneToMany',
+      'api::wilayah.wilayah'
+    >;
+    id_pengguna: Attribute.Relation<
+      'api::cabang.cabang',
+      'oneToMany',
+      'api::pengguna.pengguna'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cabang.cabang',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cabang.cabang',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiJalanJalan extends Schema.CollectionType {
+  collectionName: 'jalans';
+  info: {
+    singularName: 'jalan';
+    pluralName: 'jalans';
+    displayName: 'Jalan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    id_jalan: Attribute.BigInteger;
+    nama_jalan: Attribute.String & Attribute.Required;
+    lokasi: Attribute.String & Attribute.Required;
+    id_wilayah: Attribute.Relation<
+      'api::jalan.jalan',
+      'manyToOne',
+      'api::wilayah.wilayah'
+    >;
+    id_pengguna: Attribute.Relation<
+      'api::jalan.jalan',
+      'oneToMany',
+      'api::pengguna.pengguna'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::jalan.jalan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::jalan.jalan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPengaduanPengaduan extends Schema.CollectionType {
+  collectionName: 'pengaduans';
+  info: {
+    singularName: 'pengaduan';
+    pluralName: 'pengaduans';
+    displayName: 'Pengaduan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    id_pengaduan: Attribute.BigInteger & Attribute.Required;
+    tanggal_pengaduan: Attribute.Date & Attribute.Required;
+    foto_pengaduan: Attribute.Media & Attribute.Required;
+    kategori: Attribute.Enumeration<
+      ['Perawartan', 'Kebocoran', 'Pemasangan', 'Lainnya']
+    > &
+      Attribute.Required;
+    deskripsi: Attribute.String & Attribute.Required;
+    lokasi_pengaduan: Attribute.String & Attribute.Required;
+    id_pengguna: Attribute.Relation<
+      'api::pengaduan.pengaduan',
+      'manyToOne',
+      'api::pengguna.pengguna'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pengaduan.pengaduan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pengaduan.pengaduan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPenggunaPengguna extends Schema.CollectionType {
+  collectionName: 'penggunas';
+  info: {
+    singularName: 'pengguna';
+    pluralName: 'penggunas';
+    displayName: 'Pengguna';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    id_pengguna: Attribute.BigInteger;
+    no_daftar: Attribute.BigInteger;
+    tgl_daftar: Attribute.Date & Attribute.Required;
+    nama_pengguna: Attribute.String & Attribute.Required;
+    alamat: Attribute.String & Attribute.Required;
+    no_rumah: Attribute.String;
+    nomer_hp: Attribute.String & Attribute.Required;
+    unit: Attribute.BigInteger & Attribute.Required;
+    status: Attribute.Boolean;
+    tagihan: Attribute.BigInteger & Attribute.Required;
+    id_cabang: Attribute.Relation<
+      'api::pengguna.pengguna',
+      'manyToOne',
+      'api::cabang.cabang'
+    >;
+    id_wilayah: Attribute.Relation<
+      'api::pengguna.pengguna',
+      'manyToOne',
+      'api::wilayah.wilayah'
+    >;
+    id_jalan: Attribute.Relation<
+      'api::pengguna.pengguna',
+      'manyToOne',
+      'api::jalan.jalan'
+    >;
+    id_tipe_pelanggan: Attribute.Relation<
+      'api::pengguna.pengguna',
+      'manyToOne',
+      'api::type.type'
+    >;
+    id_type_meter: Attribute.Relation<
+      'api::pengguna.pengguna',
+      'manyToOne',
+      'api::type-meter.type-meter'
+    >;
+    id_pengaduan: Attribute.Relation<
+      'api::pengguna.pengguna',
+      'oneToMany',
+      'api::pengaduan.pengaduan'
+    >;
+    foto_pengguna: Attribute.Media;
+    users_permissions_user: Attribute.Relation<
+      'api::pengguna.pengguna',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pengguna.pengguna',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pengguna.pengguna',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTypeType extends Schema.CollectionType {
+  collectionName: 'types';
+  info: {
+    singularName: 'type';
+    pluralName: 'types';
+    displayName: 'Tipe Pelanggan';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    id_tipe_pelanggan: Attribute.BigInteger & Attribute.Required;
+    nama_tipe_pelanggan: Attribute.String;
+    id_pengguna: Attribute.Relation<
+      'api::type.type',
+      'oneToMany',
+      'api::pengguna.pengguna'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTypeMeterTypeMeter extends Schema.CollectionType {
+  collectionName: 'type_meters';
+  info: {
+    singularName: 'type-meter';
+    pluralName: 'type-meters';
+    displayName: 'Type Meter';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    id_tipe_meter: Attribute.BigInteger;
+    nama: Attribute.String & Attribute.Required;
+    id_pengguna: Attribute.Relation<
+      'api::type-meter.type-meter',
+      'oneToMany',
+      'api::pengguna.pengguna'
+    >;
+    harga: Attribute.BigInteger & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::type-meter.type-meter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::type-meter.type-meter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWilayahWilayah extends Schema.CollectionType {
+  collectionName: 'wilayahs';
+  info: {
+    singularName: 'wilayah';
+    pluralName: 'wilayahs';
+    displayName: 'wilayah';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ID_WILAYAH: Attribute.BigInteger & Attribute.Required;
+    NAMA_WILAYAH: Attribute.String & Attribute.Required;
+    LOCATION: Attribute.String & Attribute.Required;
+    id_jalan: Attribute.Relation<
+      'api::wilayah.wilayah',
+      'oneToMany',
+      'api::jalan.jalan'
+    >;
+    id_cabang: Attribute.Relation<
+      'api::wilayah.wilayah',
+      'manyToOne',
+      'api::cabang.cabang'
+    >;
+    id_penggguna: Attribute.Relation<
+      'api::wilayah.wilayah',
+      'oneToMany',
+      'api::pengguna.pengguna'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::wilayah.wilayah',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::wilayah.wilayah',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -830,7 +1116,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::type-meter.type-meter': ApiTypeMeterTypeMeter;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -839,6 +1124,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::cabang.cabang': ApiCabangCabang;
+      'api::jalan.jalan': ApiJalanJalan;
+      'api::pengaduan.pengaduan': ApiPengaduanPengaduan;
+      'api::pengguna.pengguna': ApiPenggunaPengguna;
+      'api::type.type': ApiTypeType;
+      'api::type-meter.type-meter': ApiTypeMeterTypeMeter;
+      'api::wilayah.wilayah': ApiWilayahWilayah;
     }
   }
 }

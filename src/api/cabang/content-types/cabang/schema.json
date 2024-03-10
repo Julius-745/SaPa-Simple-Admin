@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "type_meters",
+  "collectionName": "cabangs",
   "info": {
-    "singularName": "type-meter",
-    "pluralName": "type-meters",
-    "displayName": "Type Meter",
+    "singularName": "cabang",
+    "pluralName": "cabangs",
+    "displayName": "Cabang",
     "description": ""
   },
   "options": {
@@ -12,22 +12,25 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "id_tipe_meter": {
+    "id_cabang": {
+      "required": true,
       "type": "biginteger"
     },
-    "nama": {
+    "nama_cabang": {
       "type": "string",
       "required": true
+    },
+    "id_wilayah": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wilayah.wilayah",
+      "mappedBy": "id_cabang"
     },
     "id_pengguna": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::pengguna.pengguna",
-      "mappedBy": "id_type_meter"
-    },
-    "harga": {
-      "type": "biginteger",
-      "required": true
+      "mappedBy": "id_cabang"
     }
   }
 }
