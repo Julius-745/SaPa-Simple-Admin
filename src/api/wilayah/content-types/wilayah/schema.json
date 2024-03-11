@@ -12,35 +12,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "ID_WILAYAH": {
-      "type": "biginteger",
-      "required": true
-    },
-    "NAMA_WILAYAH": {
+    "nama_wilayah": {
       "type": "string",
       "required": true
     },
-    "LOCATION": {
+    "lokasi": {
       "type": "string",
       "required": true
-    },
-    "id_jalan": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::jalan.jalan",
-      "mappedBy": "id_wilayah"
     },
     "id_cabang": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::cabang.cabang",
-      "inversedBy": "id_wilayah"
-    },
-    "id_penggguna": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::pengguna.pengguna",
-      "mappedBy": "id_wilayah"
+      "relation": "oneToOne",
+      "target": "api::cabang.cabang"
     }
   }
 }

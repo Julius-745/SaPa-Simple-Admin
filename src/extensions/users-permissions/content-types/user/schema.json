@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -65,6 +64,70 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
+    },
+    "no_daftar": {
+      "type": "biginteger",
+      "required": true
+    },
+    "tgl_daftar": {
+      "type": "date"
+    },
+    "alamat": {
+      "type": "string",
+      "required": true
+    },
+    "foto_pengguna": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "nomer_hp": {
+      "type": "string",
+      "required": false
+    },
+    "nomer_rumah": {
+      "type": "string",
+      "required": true
+    },
+    "unit_pengguna": {
+      "type": "biginteger",
+      "required": true
+    },
+    "status_pengguna": {
+      "type": "boolean",
+      "required": true
+    },
+    "tagihan": {
+      "type": "biginteger",
+      "required": true
+    },
+    "id_cabang": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cabang.cabang"
+    },
+    "id_wilayah": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wilayah.wilayah"
+    },
+    "id_jalan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::jalan.jalan"
+    },
+    "id_tipe_pelanggan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::type.type"
+    },
+    "id_type_meter": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::type-meter.type-meter"
     }
   }
 }

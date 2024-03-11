@@ -12,25 +12,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "id_cabang": {
-      "required": true,
-      "type": "biginteger"
-    },
     "nama_cabang": {
       "type": "string",
       "required": true
-    },
-    "id_wilayah": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::wilayah.wilayah",
-      "mappedBy": "id_cabang"
-    },
-    "id_pengguna": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::pengguna.pengguna",
-      "mappedBy": "id_cabang"
     }
   }
 }

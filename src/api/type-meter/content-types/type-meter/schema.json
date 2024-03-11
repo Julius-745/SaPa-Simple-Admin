@@ -12,18 +12,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "id_tipe_meter": {
-      "type": "biginteger"
-    },
     "nama": {
       "type": "string",
       "required": true
-    },
-    "id_pengguna": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::pengguna.pengguna",
-      "mappedBy": "id_type_meter"
     },
     "harga": {
       "type": "biginteger",

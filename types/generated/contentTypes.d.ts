@@ -695,7 +695,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -723,6 +722,40 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToOne',
       'plugin::users-permissions.role'
+    >;
+    no_daftar: Attribute.BigInteger & Attribute.Required;
+    tgl_daftar: Attribute.Date;
+    alamat: Attribute.String & Attribute.Required;
+    foto_pengguna: Attribute.Media & Attribute.Required;
+    nomer_hp: Attribute.String;
+    nomer_rumah: Attribute.String & Attribute.Required;
+    unit_pengguna: Attribute.BigInteger & Attribute.Required;
+    status_pengguna: Attribute.Boolean & Attribute.Required;
+    tagihan: Attribute.BigInteger & Attribute.Required;
+    id_cabang: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::cabang.cabang'
+    >;
+    id_wilayah: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::wilayah.wilayah'
+    >;
+    id_jalan: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::jalan.jalan'
+    >;
+    id_tipe_pelanggan: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::type.type'
+    >;
+    id_type_meter: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::type-meter.type-meter'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -800,18 +833,7 @@ export interface ApiCabangCabang extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    id_cabang: Attribute.BigInteger & Attribute.Required;
     nama_cabang: Attribute.String & Attribute.Required;
-    id_wilayah: Attribute.Relation<
-      'api::cabang.cabang',
-      'oneToMany',
-      'api::wilayah.wilayah'
-    >;
-    id_pengguna: Attribute.Relation<
-      'api::cabang.cabang',
-      'oneToMany',
-      'api::pengguna.pengguna'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -836,23 +858,18 @@ export interface ApiJalanJalan extends Schema.CollectionType {
     singularName: 'jalan';
     pluralName: 'jalans';
     displayName: 'Jalan';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    id_jalan: Attribute.BigInteger;
     nama_jalan: Attribute.String & Attribute.Required;
     lokasi: Attribute.String & Attribute.Required;
     id_wilayah: Attribute.Relation<
       'api::jalan.jalan',
-      'manyToOne',
+      'oneToOne',
       'api::wilayah.wilayah'
-    >;
-    id_pengguna: Attribute.Relation<
-      'api::jalan.jalan',
-      'oneToMany',
-      'api::pengguna.pengguna'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -878,12 +895,12 @@ export interface ApiPengaduanPengaduan extends Schema.CollectionType {
     singularName: 'pengaduan';
     pluralName: 'pengaduans';
     displayName: 'Pengaduan';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    id_pengaduan: Attribute.BigInteger & Attribute.Required;
     tanggal_pengaduan: Attribute.Date & Attribute.Required;
     foto_pengaduan: Attribute.Media & Attribute.Required;
     kategori: Attribute.Enumeration<
@@ -892,10 +909,10 @@ export interface ApiPengaduanPengaduan extends Schema.CollectionType {
       Attribute.Required;
     deskripsi: Attribute.String & Attribute.Required;
     lokasi_pengaduan: Attribute.String & Attribute.Required;
-    id_pengguna: Attribute.Relation<
+    users_permissions_user: Attribute.Relation<
       'api::pengaduan.pengaduan',
-      'manyToOne',
-      'api::pengguna.pengguna'
+      'oneToOne',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -927,52 +944,6 @@ export interface ApiPenggunaPengguna extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    id_pengguna: Attribute.BigInteger;
-    no_daftar: Attribute.BigInteger;
-    tgl_daftar: Attribute.Date & Attribute.Required;
-    nama_pengguna: Attribute.String & Attribute.Required;
-    alamat: Attribute.String & Attribute.Required;
-    no_rumah: Attribute.String;
-    nomer_hp: Attribute.String & Attribute.Required;
-    unit: Attribute.BigInteger & Attribute.Required;
-    status: Attribute.Boolean;
-    tagihan: Attribute.BigInteger & Attribute.Required;
-    id_cabang: Attribute.Relation<
-      'api::pengguna.pengguna',
-      'manyToOne',
-      'api::cabang.cabang'
-    >;
-    id_wilayah: Attribute.Relation<
-      'api::pengguna.pengguna',
-      'manyToOne',
-      'api::wilayah.wilayah'
-    >;
-    id_jalan: Attribute.Relation<
-      'api::pengguna.pengguna',
-      'manyToOne',
-      'api::jalan.jalan'
-    >;
-    id_tipe_pelanggan: Attribute.Relation<
-      'api::pengguna.pengguna',
-      'manyToOne',
-      'api::type.type'
-    >;
-    id_type_meter: Attribute.Relation<
-      'api::pengguna.pengguna',
-      'manyToOne',
-      'api::type-meter.type-meter'
-    >;
-    id_pengaduan: Attribute.Relation<
-      'api::pengguna.pengguna',
-      'oneToMany',
-      'api::pengaduan.pengaduan'
-    >;
-    foto_pengguna: Attribute.Media;
-    users_permissions_user: Attribute.Relation<
-      'api::pengguna.pengguna',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1003,13 +974,7 @@ export interface ApiTypeType extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    id_tipe_pelanggan: Attribute.BigInteger & Attribute.Required;
     nama_tipe_pelanggan: Attribute.String;
-    id_pengguna: Attribute.Relation<
-      'api::type.type',
-      'oneToMany',
-      'api::pengguna.pengguna'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1032,13 +997,7 @@ export interface ApiTypeMeterTypeMeter extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    id_tipe_meter: Attribute.BigInteger;
     nama: Attribute.String & Attribute.Required;
-    id_pengguna: Attribute.Relation<
-      'api::type-meter.type-meter',
-      'oneToMany',
-      'api::pengguna.pengguna'
-    >;
     harga: Attribute.BigInteger & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1070,23 +1029,12 @@ export interface ApiWilayahWilayah extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    ID_WILAYAH: Attribute.BigInteger & Attribute.Required;
-    NAMA_WILAYAH: Attribute.String & Attribute.Required;
-    LOCATION: Attribute.String & Attribute.Required;
-    id_jalan: Attribute.Relation<
-      'api::wilayah.wilayah',
-      'oneToMany',
-      'api::jalan.jalan'
-    >;
+    nama_wilayah: Attribute.String & Attribute.Required;
+    lokasi: Attribute.String & Attribute.Required;
     id_cabang: Attribute.Relation<
       'api::wilayah.wilayah',
-      'manyToOne',
+      'oneToOne',
       'api::cabang.cabang'
-    >;
-    id_penggguna: Attribute.Relation<
-      'api::wilayah.wilayah',
-      'oneToMany',
-      'api::pengguna.pengguna'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

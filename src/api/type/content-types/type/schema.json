@@ -12,18 +12,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "id_tipe_pelanggan": {
-      "type": "biginteger",
-      "required": true
-    },
     "nama_tipe_pelanggan": {
       "type": "string"
-    },
-    "id_pengguna": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::pengguna.pengguna",
-      "mappedBy": "id_tipe_pelanggan"
     }
   }
 }
