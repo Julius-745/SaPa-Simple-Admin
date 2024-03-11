@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cabangs",
+  "info": {
+    "singularName": "cabang",
+    "pluralName": "cabangs",
+    "displayName": "Cabang",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama_cabang": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

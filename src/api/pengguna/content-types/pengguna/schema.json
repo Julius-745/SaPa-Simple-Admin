@@ -1,0 +1,15 @@
+{
+  "kind": "collectionType",
+  "collectionName": "penggunas",
+  "info": {
+    "singularName": "pengguna",
+    "pluralName": "penggunas",
+    "displayName": "Pengguna",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

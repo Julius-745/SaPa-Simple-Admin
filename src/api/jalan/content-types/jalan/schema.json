@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jalans",
+  "info": {
+    "singularName": "jalan",
+    "pluralName": "jalans",
+    "displayName": "Jalan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nama_jalan": {
+      "type": "string",
+      "required": true
+    },
+    "lokasi": {
+      "type": "string",
+      "required": true
+    },
+    "id_wilayah": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wilayah.wilayah"
+    }
+  }
+}

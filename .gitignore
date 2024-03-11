@@ -3,3 +3,4 @@
 /.strapi
 /build
 /.env
+/public

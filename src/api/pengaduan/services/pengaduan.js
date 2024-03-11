@@ -1,0 +1,9 @@
+'use strict';
+
+/**
+ * pengaduan service
+ */
+
+const { createCoreService } = require('@strapi/strapi').factories;
+
+module.exports = createCoreService('api::pengaduan.pengaduan');
