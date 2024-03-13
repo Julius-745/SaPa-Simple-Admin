@@ -723,15 +723,15 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    no_daftar: Attribute.BigInteger & Attribute.Required;
+    no_daftar: Attribute.BigInteger;
     tgl_daftar: Attribute.Date;
-    alamat: Attribute.String & Attribute.Required;
-    foto_pengguna: Attribute.Media & Attribute.Required;
+    alamat: Attribute.String;
+    foto_pengguna: Attribute.Media;
     nomer_hp: Attribute.String;
-    nomer_rumah: Attribute.String & Attribute.Required;
-    unit_pengguna: Attribute.BigInteger & Attribute.Required;
-    status_pengguna: Attribute.Boolean & Attribute.Required;
-    tagihan: Attribute.BigInteger & Attribute.Required;
+    nomer_rumah: Attribute.String;
+    unit_pengguna: Attribute.BigInteger;
+    status_pengguna: Attribute.Boolean;
+    tagihan: Attribute.BigInteger;
     id_cabang: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',
