@@ -15,12 +15,6 @@
     "nama_cabang": {
       "type": "string",
       "required": true
-    },
-    "createAt": {
-      "type": "date"
-    },
-    "updateAt": {
-      "type": "date"
     }
   }
 }

@@ -14,12 +14,6 @@
   "attributes": {
     "nama_tipe_pelanggan": {
       "type": "string"
-    },
-    "createAt": {
-      "type": "date"
-    },
-    "updateAt": {
-      "type": "date"
     }
   }
 }

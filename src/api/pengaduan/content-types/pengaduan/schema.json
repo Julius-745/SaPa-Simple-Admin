@@ -48,11 +48,16 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "createAt": {
-      "type": "date"
-    },
-    "updateAt": {
-      "type": "date"
+    "status_pengaduan": {
+      "type": "enumeration",
+      "enum": [
+        "Dilaporkan",
+        "Diterima",
+        "Ditolak",
+        "Proses Perbaikan",
+        "Perbaikan Selesai"
+      ],
+      "required": true
     }
   }
 }
