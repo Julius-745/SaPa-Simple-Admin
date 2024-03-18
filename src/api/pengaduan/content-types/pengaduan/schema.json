@@ -47,6 +47,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "createAt": {
+      "type": "date"
+    },
+    "updateAt": {
+      "type": "date"
     }
   }
 }

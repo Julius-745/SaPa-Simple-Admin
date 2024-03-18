@@ -24,6 +24,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::cabang.cabang"
+    },
+    "updateAt": {
+      "type": "date"
+    },
+    "createAt": {
+      "type": "date"
     }
   }
 }

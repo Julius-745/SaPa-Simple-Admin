@@ -128,6 +128,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::type-meter.type-meter"
+    },
+    "createAt": {
+      "type": "date"
+    },
+    "updateAt": {
+      "type": "date"
     }
   }
 }

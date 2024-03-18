@@ -24,6 +24,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::wilayah.wilayah"
+    },
+    "createAt": {
+      "type": "date"
+    },
+    "updateAt": {
+      "type": "date"
     }
   }
 }

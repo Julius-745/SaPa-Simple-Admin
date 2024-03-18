@@ -757,6 +757,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'api::type-meter.type-meter'
     >;
+    createAt: Attribute.Date;
+    updateAt: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -834,6 +836,8 @@ export interface ApiCabangCabang extends Schema.CollectionType {
   };
   attributes: {
     nama_cabang: Attribute.String & Attribute.Required;
+    createAt: Attribute.Date;
+    updateAt: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -871,6 +875,8 @@ export interface ApiJalanJalan extends Schema.CollectionType {
       'oneToOne',
       'api::wilayah.wilayah'
     >;
+    createAt: Attribute.Date;
+    updateAt: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -914,6 +920,8 @@ export interface ApiPengaduanPengaduan extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    createAt: Attribute.Date;
+    updateAt: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -975,6 +983,8 @@ export interface ApiTypeType extends Schema.CollectionType {
   };
   attributes: {
     nama_tipe_pelanggan: Attribute.String;
+    createAt: Attribute.Date;
+    updateAt: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -999,6 +1009,8 @@ export interface ApiTypeMeterTypeMeter extends Schema.CollectionType {
   attributes: {
     nama: Attribute.String & Attribute.Required;
     harga: Attribute.BigInteger & Attribute.Required;
+    createAt: Attribute.Date;
+    updateAt: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1036,6 +1048,8 @@ export interface ApiWilayahWilayah extends Schema.CollectionType {
       'oneToOne',
       'api::cabang.cabang'
     >;
+    updateAt: Attribute.Date;
+    createAt: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

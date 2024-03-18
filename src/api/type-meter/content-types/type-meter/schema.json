@@ -19,6 +19,12 @@
     "harga": {
       "type": "biginteger",
       "required": true
+    },
+    "createAt": {
+      "type": "date"
+    },
+    "updateAt": {
+      "type": "date"
     }
   }
 }
