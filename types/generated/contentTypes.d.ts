@@ -909,11 +909,21 @@ export interface ApiPengaduanPengaduan extends Schema.CollectionType {
       Attribute.Required;
     deskripsi: Attribute.String & Attribute.Required;
     lokasi_pengaduan: Attribute.String & Attribute.Required;
-    users_permissions_user: Attribute.Relation<
+    id_user: Attribute.Relation<
       'api::pengaduan.pengaduan',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    status_pengaduan: Attribute.Enumeration<
+      [
+        'Dilaporkan',
+        'Diterima',
+        'Ditolak',
+        'Proses Perbaikan',
+        'Perbaikan Selesai'
+      ]
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

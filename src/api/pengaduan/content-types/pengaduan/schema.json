@@ -43,10 +43,21 @@
       "type": "string",
       "required": true
     },
-    "users_permissions_user": {
+    "id_user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "status_pengaduan": {
+      "type": "enumeration",
+      "enum": [
+        "Dilaporkan",
+        "Diterima",
+        "Ditolak",
+        "Proses Perbaikan",
+        "Perbaikan Selesai"
+      ],
+      "required": true
     }
   }
 }
