@@ -924,6 +924,11 @@ export interface ApiPengaduanPengaduan extends Schema.CollectionType {
       ]
     > &
       Attribute.Required;
+    id_jalan: Attribute.Relation<
+      'api::pengaduan.pengaduan',
+      'oneToOne',
+      'api::jalan.jalan'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

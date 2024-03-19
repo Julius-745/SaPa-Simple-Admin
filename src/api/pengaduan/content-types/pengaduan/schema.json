@@ -58,6 +58,11 @@
         "Perbaikan Selesai"
       ],
       "required": true
+    },
+    "id_jalan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::jalan.jalan"
     }
   }
 }
